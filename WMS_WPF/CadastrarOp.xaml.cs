@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -31,7 +32,7 @@ public partial class CadastrarOp : Window
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
     }
 
-    private void txt_cadastrarOp_Click(object sender, RoutedEventArgs e)
+    private void btn_cadastrarOp_Click(object sender, RoutedEventArgs e)
     {
         string numeroOp = txt_numeroOp.Text.Trim();
         string quantidadeItem = txt_quantidadeItem.Text.Trim(); 
@@ -41,9 +42,21 @@ public partial class CadastrarOp : Window
             MessageBox.Show("Preencher todos os campos.");
             return;
         }
-        string sql = $"INSERT INTO Op (numeroOp, quantidadeItem) VALUES ({numeroOp}, {quantidadeItem})";
-        BancodeDados.InsertDb(sql);
-        MessageBox.Show("Cadastrado com sucesso.");
-        this.Close();
+        string sql = $"SELECT * FROM Op Where numeroOp='{numeroOp}'";
+        bool existOp = BancodeDados.GetSomeSelectDb(sql);
+        if(existOp)
+        {
+            MessageBox.Show($"A Op {numeroOp} já está cadastrada.");
+        }
+        else
+        {
+            sql = $"INSERT INTO Op (numeroOp, quantidadeItem) VALUES ({numeroOp}, {quantidadeItem})";
+            BancodeDados.InsertDb(sql);
+            MessageBox.Show("Cadastrado com sucesso.");
+        }
+
+        txt_numeroOp.Text = "";
+        txt_quantidadeItem.Text = "";
+        this.Hide();
     }
 }

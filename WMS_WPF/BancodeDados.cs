@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WMS_WPF;
 
@@ -24,7 +25,7 @@ public class BancodeDados
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Erro ao fazer conexão ao banco de dados. Error: {ex}");
+            MessageBox.Show($"Erro ao fazer conexão ao banco de dados. Error: {ex}");
         }
         return conn;
     }
@@ -42,7 +43,7 @@ public class BancodeDados
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Não foi possível criar o banco de dados. Error: {ex}");
+            MessageBox.Show($"Não foi possível criar o banco de dados. Error: {ex}");
         }
     }
 
@@ -61,7 +62,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(' ');
-            Console.WriteLine($"Não foi possível criar a tabela {nameTable[4]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível criar a tabela {nameTable[4]}. Error: {ex}");
         }
     }
 
@@ -80,7 +81,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            Console.WriteLine($"Não foi possível inserir dados na tabela {nameTable[2]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível inserir dados na tabela {nameTable[2]}. Error: {ex}");
         }
     }
 
@@ -99,7 +100,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            Console.WriteLine($"Não foi possível atualizar a tabela {nameTable[1]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível atualizar a tabela {nameTable[1]}. Error: {ex}");
         }
     }
 
@@ -118,7 +119,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            Console.WriteLine($"Não foi possível excluir dados da tabela {nameTable[2]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível excluir dados da tabela {nameTable[2]}. Error: {ex}");
         }
     }
 
@@ -140,8 +141,17 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            Console.WriteLine($"Não foi possível Consultar dados da tabela {nameTable[3]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível Consultar dados da tabela {nameTable[3]}. Error: {ex}");
         }
         return dt;
+    }
+
+    public static bool GetSomeSelectDb(string sql)
+    {
+        DataTable dt = SelectDb(sql);
+
+        if (dt.Rows.Count > 0)
+            return true;
+        return false;
     }
 }
