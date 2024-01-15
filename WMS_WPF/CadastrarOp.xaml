@@ -13,6 +13,6 @@
         <Label Content="Quantidade de item:" Canvas.Left="18" VerticalAlignment="Center" Canvas.Top="120" FontSize="16"/>
         <TextBox Name ="txt_quantidadeItem"  PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Left" Width="203" Canvas.Left="175" Canvas.Top="120" Height="27" FontSize="16" MaxLength="6"/>
 
-        <Button Name="btn_cadastrarOp" Content="Cadastrar" Width="150" Height="50" Canvas.Left="125" Canvas.Top="220" FontSize="20" Click="btn_cadastrarOp_Click"/>
+        <Button Name="btn_cadastrarOp" Content="Cadastrar" Width="150" Height="50" Canvas.Left="125" Canvas.Top="220" FontSize="20" Click="btn_cadastrarOp_Click" ScrollViewer.CanContentScroll="True"/>
     </Canvas>
 </Window>

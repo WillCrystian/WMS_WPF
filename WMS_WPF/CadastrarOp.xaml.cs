@@ -46,13 +46,13 @@ public partial class CadastrarOp : Window
         bool existOp = BancodeDados.GetSomeSelectDb(sql);
         if(existOp)
         {
-            MessageBox.Show($"A Op {numeroOp} já está cadastrada.");
+            MessageBox.Show($"A OP {numeroOp} já está cadastrada.", "Messagem Erro", MessageBoxButton.OK);
         }
         else
         {
             sql = $"INSERT INTO Op (numeroOp, quantidadeItem) VALUES ({numeroOp}, {quantidadeItem})";
             BancodeDados.InsertDb(sql);
-            MessageBox.Show("Cadastrado com sucesso.");
+            MessageBox.Show("Cadastrado com sucesso.", "", MessageBoxButton.OK);
         }
 
         txt_numeroOp.Text = "";

@@ -22,6 +22,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        CriarBancoDeDados();
+    }
+
+    private void CriarBancoDeDados()
+    {
         BancodeDados.CreateDb();
         sql = "CREATE TABLE IF NOT EXISTS Op (id INTEGER PRIMARY KEY AUTOINCREMENT, numeroOp INTERGER NOT NULL UNIQUE, quantidadeItem INTERGER NOT NULL);";
         BancodeDados.CreateTableDb(sql);

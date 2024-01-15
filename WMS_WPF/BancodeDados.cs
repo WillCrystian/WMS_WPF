@@ -25,7 +25,7 @@ public class BancodeDados
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Erro ao fazer conexão ao banco de dados. Error: {ex}");
+            MessageBox.Show($"Erro ao fazer conexão ao banco de dados. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
         return conn;
     }
@@ -43,7 +43,7 @@ public class BancodeDados
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Não foi possível criar o banco de dados. Error: {ex}");
+            MessageBox.Show($"Não foi possível criar o banco de dados. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
     }
 
@@ -62,7 +62,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(' ');
-            MessageBox.Show($"Não foi possível criar a tabela {nameTable[4]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível criar a tabela {nameTable[4]}. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
     }
 
@@ -81,7 +81,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            MessageBox.Show($"Não foi possível inserir dados na tabela {nameTable[2]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível inserir dados na tabela {nameTable[2]}. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
     }
 
@@ -100,7 +100,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            MessageBox.Show($"Não foi possível atualizar a tabela {nameTable[1]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível atualizar a tabela {nameTable[1]}. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
     }
 
@@ -119,7 +119,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            MessageBox.Show($"Não foi possível excluir dados da tabela {nameTable[2]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível excluir dados da tabela {nameTable[2]}. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
     }
 
@@ -141,7 +141,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(" ");
-            MessageBox.Show($"Não foi possível Consultar dados da tabela {nameTable[3]}. Error: {ex}");
+            MessageBox.Show($"Não foi possível Consultar dados da tabela {nameTable[3]}. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
         return dt;
     }
