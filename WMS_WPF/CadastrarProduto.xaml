@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:WMS_WPF"
         mc:Ignorable="d"
         Title="CadastrarProduto" Height="350" Width="400" WindowStartupLocation="CenterScreen">
-    <Canvas>
+    <Canvas Loaded="Load">
         <Label Content="Cadastro de Produto" Canvas.Left="18" Canvas.Top="30" FontSize="20" Width="360"/>
         <Label Content="Número OP:" Canvas.Left="18" VerticalAlignment="Center" Canvas.Top="80" FontSize="16"/>
-        <ComboBox Name="txt_numeroOp" HorizontalAlignment="Left" Width="238" Canvas.Left="140" Canvas.Top="80" Height="27"/>
+        <ComboBox Name="cb_numeroOp" HorizontalAlignment="Left" Width="238" Canvas.Left="140" Canvas.Top="80" Height="27"/>
         <Label Content="Item:" Canvas.Left="18" VerticalAlignment="Center" Canvas.Top="120" FontSize="16"/>
         <TextBox Name ="txt_item" PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Left" Width="238" Canvas.Left="140" Canvas.Top="120" Height="27" FontSize="16" MaxLength="6" VerticalAlignment="Center"/>
 
-        <Button Name="txt_cadastrarProduto" Content="Cadastrar" Width="150" Height="50" Canvas.Left="125" Canvas.Top="220" FontSize="20"/>
+        <Button Name="btn_cadastrarProduto" Content="Cadastrar" Width="150" Height="50" Canvas.Left="125" Canvas.Top="220" FontSize="20" Click="btn_cadastrarProduto_Click"/>
     </Canvas>
 </Window>

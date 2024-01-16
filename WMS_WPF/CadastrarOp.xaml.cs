@@ -39,7 +39,7 @@ public partial class CadastrarOp : Window
         
         if(numeroOp == "" ||quantidadeItem == "")
         {
-            MessageBox.Show("Preencher todos os campos.");
+            MessageBox.Show("Preencher todos os campos.", "Mensagem Erro", MessageBoxButton.OK);
             return;
         }
         string sql = $"SELECT * FROM Op Where numeroOp='{numeroOp}'";
