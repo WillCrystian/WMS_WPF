@@ -29,9 +29,6 @@ public class BancodeDados
         }
         return conn;
     }
-
-
-
     public static void CreateDb()
     {
         try

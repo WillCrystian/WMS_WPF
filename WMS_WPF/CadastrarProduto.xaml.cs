@@ -35,6 +35,7 @@ public partial class CadastrarProduto : Window
 
     private void btn_cadastrarProduto_Click(object sender, RoutedEventArgs e)
     {
+        string sql = "";
         string numeroOp = cb_numeroOp.Text;
         string item = txt_item.Text.Trim();
 
@@ -44,7 +45,12 @@ public partial class CadastrarProduto : Window
             return;
         }
 
-        string sql = $"SELECT * FROM Produto WHERE numeroOp = {numeroOp} AND item= {item}";
+        sql = $"SELECT * FROM Op Where numeroOp={numeroOp}";
+        DataTable dt = BancodeDados.SelectDb(sql);       
+        var opId = dt.Rows[0]["id"];
+        int quantidadeItem = Convert.ToInt32(dt.Rows[0]["quantidadeItem"]);
+
+        sql = $"SELECT * FROM Produto WHERE opId = {opId} AND item= {item}";       
         if (BancodeDados.GetSomeSelectDb(sql))
         {
             MessageBox.Show($"O item {item} da OP {numeroOp} já existe.", "Mensagem Erro", MessageBoxButton.OK);
@@ -52,10 +58,14 @@ public partial class CadastrarProduto : Window
         }
         else
         {
-            //sql = $"SELECT * FROM Produtos Where numeroOp={numeroOp}";
-            //DataTable dt = BancodeDados.SelectDb(sql);
-
-            sql = $"INSERT INTO Produto (numeroOp, item) VALUES ({numeroOp}, {item})";
+            sql = $"SELECT * FROM Produto WHERE opId = {opId}";
+            DataTable d = BancodeDados.SelectDb(sql);
+            if (d.Rows.Count >= quantidadeItem)
+            {
+                MessageBox.Show($"O limite de item para a OP {numeroOp} já estorou.", "Mensagem Erro", MessageBoxButton.OK);
+                return;
+            }
+            sql = $"INSERT INTO Produto (opId, item) VALUES ({opId}, {item})";
             BancodeDados.InsertDb(sql);
             MessageBox.Show($"O Produto da OP {numeroOp} item {item} cadastrado com sucesso", "", MessageBoxButton.OK);
         }
@@ -67,13 +77,11 @@ public partial class CadastrarProduto : Window
 
     private void Load(object sender, RoutedEventArgs e)
     {
-        string sql = $"SELECT * FROM Op";
+        string sql = $"SELECT * FROM Op ORDER BY numeroOp";
         DataTable dt = BancodeDados.SelectDb(sql);
         foreach (DataRow dr in dt.Rows)
         {
             cb_numeroOp.Items.Add(dr["numeroOp"]);
         }
-        //    cb_numeroOp.DisplayMemberPath;
-        //    cb_numeroOp.SelectedValue;
     }
 }
