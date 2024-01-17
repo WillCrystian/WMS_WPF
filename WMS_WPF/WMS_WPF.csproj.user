@@ -7,27 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="CadastrarOp.xaml.cs">
+    <Compile Update="Screens\CadastrarOp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="CadastrarProduto.xaml.cs">
+    <Compile Update="Screens\CadastrarProduto.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Screens\lll.xaml.cs">
+    <Compile Update="Screens\CadastrarRua.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="CadastrarOp.xaml">
+    <Page Update="Screens\CadastrarOp.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="CadastrarProduto.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Screens\lll.xaml">
+    <Page Update="Screens\CadastrarProduto.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Screens\CadastrarRua.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

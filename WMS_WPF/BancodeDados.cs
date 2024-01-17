@@ -59,7 +59,7 @@ public class BancodeDados
         catch (Exception ex)
         {
             var nameTable = sql.Split(' ');
-            MessageBox.Show($"Não foi possível criar a tabela {nameTable[4]}. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
+            MessageBox.Show($"Não foi possível criar a tabela {nameTable[5]}. Error: {ex}", "Messagem Erro", MessageBoxButton.OK);
         }
     }
 

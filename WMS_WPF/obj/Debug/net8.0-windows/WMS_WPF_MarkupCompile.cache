@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\william.aniceto\source\repos\WMS_WPF\WMS_WPF\App.xaml
-4212685705
+4562960711
 
-91134923779
-203-2064486959
-CadastrarOp.xaml;CadastrarProduto.xaml;MainWindow.xaml;Screens\lll.xaml;
+9-686510382
+206793731131
+MainWindow.xaml;Screens\CadastrarOp.xaml;Screens\CadastrarProduto.xaml;Screens\CadastrarRua.xaml;
 
 False
 

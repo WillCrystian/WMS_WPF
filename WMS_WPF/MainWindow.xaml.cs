@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WMS_WPF.Screens;
 
 namespace WMS_WPF;
 
@@ -18,7 +19,9 @@ namespace WMS_WPF;
 public partial class MainWindow : Window
 {
     CadastrarOp cadastrarOp = new CadastrarOp();
-    CadastrarProduto CadastrarProduto = new CadastrarProduto();
+    CadastrarProduto cadastrarProduto = new CadastrarProduto();
+    CadastrarRua cadastrarRua = new CadastrarRua();
+    
     public MainWindow()
     {
         InitializeComponent();
@@ -35,8 +38,14 @@ public partial class MainWindow : Window
         BancodeDados.CreateTableDb(sql);
         sql = @"CREATE TABLE IF NOT EXISTS Produto (
                 id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                opId INTERGER, item INTERGER NOT NULL, 
+                opId INTERGER, 
+                item INTERGER NOT NULL, 
                 FOREIGN KEY (opId) REFERENCES Op(id) ON DELETE CASCADE);";
+        BancodeDados.CreateTableDb(sql);
+        sql = @"CREATE TABLE IF NOT EXISTS Rua (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                numeroRua INTERGER NOT NULL,
+                quantidadePosicoes INTERGER NOT NULL)";
         BancodeDados.CreateTableDb(sql);
     }
 
@@ -47,6 +56,11 @@ public partial class MainWindow : Window
 
     private void btn_cadastrarProduto_Click(object sender, RoutedEventArgs e)
     {
-        CadastrarProduto.Show();
+        cadastrarProduto.Show();
+    }
+
+    private void btn_cadastrarRua_Click(object sender, RoutedEventArgs e)
+    {
+        cadastrarRua.Show();
     }
 }
