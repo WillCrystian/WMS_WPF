@@ -11,13 +11,13 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Title="WMS" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Canvas>
+        Title="WMS" Height="800" Width="800" WindowStartupLocation="CenterScreen">
+    <Canvas x:Name="myCanvas">
         <Button Name="btn_cadastrarOp" Width="150" Height="50" Canvas.Left="30" Canvas.Top="10" Content="Cadastrar OP" Click="btn_cadastrarOp_Click"/>
         <Button Name="btn_cadastrarProduto" Width="150" Height="50" Canvas.Left="190" Canvas.Top="10" Content="Cadastrar Produto" Click="btn_cadastrarProduto_Click"/>
         <Button Name="btn_cadastrarRua" Width="150" Height="50" Canvas.Left="350" Canvas.Top="10" Content="Cadastrar Rua" Click="btn_cadastrarRua_Click"/>
-        <Button Width="50" Height="50" Canvas.Left="30" Canvas.Top="90"/>
+        <!--<Button Width="50" Height="50" Canvas.Left="30" Canvas.Top="90"/>
         <Button Width="50" Height="50" Canvas.Left="90" Canvas.Top="90"/>
-        <Button Width="50" Height="50" Canvas.Left="150" Canvas.Top="90"/>
+        <Button Width="50" Height="50" Canvas.Left="150" Canvas.Top="90"/>-->
     </Canvas>
 </Window>

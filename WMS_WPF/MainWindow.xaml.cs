@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using System.Data;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +27,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         CriarBancoDeDados();
+        CreatePositionScreen();
     }
 
     private void CriarBancoDeDados()
@@ -63,4 +65,28 @@ public partial class MainWindow : Window
     {
         cadastrarRua.Show();
     }
+
+    private void CreatePositionScreen()
+    {
+        string sql = "SELECT * FROM Rua";
+        DataTable dt = BancodeDados.SelectDb(sql);
+        int altura = 100;
+        int espacamentoAltura = 60;
+
+        foreach (DataRow dr in dt.Rows)
+        {
+            int quantidadePosicoes = Convert.ToInt32(dr["quantidadePosicoes"]);
+            int numeroRua = Convert.ToInt32(dr["numeroRua"]);
+
+            for (int i = 0; i < quantidadePosicoes; i++)
+            {
+                Posicao posicao = new Posicao(numeroRua, altura, i);
+                myCanvas.Children.Add(posicao.button);
+                myCanvas.Children.Add(posicao.label);
+            }
+            altura += espacamentoAltura;
+        }
+    }
+
 }
+
