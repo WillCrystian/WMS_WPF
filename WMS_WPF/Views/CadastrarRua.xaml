@@ -11,7 +11,7 @@
         <Label Content="Número Rua:" Canvas.Left="18" VerticalAlignment="Center" Canvas.Top="80" FontSize="16"/>
         <TextBox Name="txt_numeroRua" PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Left" Width="172" Canvas.Left="206" Canvas.Top="80" Height="27" FontSize="16" MaxLength="2" VerticalAlignment="Center"/>
         <Label Content="Quantidade de Posições:" Canvas.Left="18" VerticalAlignment="Center" Canvas.Top="120" FontSize="16"/>
-        <ComboBox Name ="cb_quantidadePosicoes"  PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Left" Width="172" Canvas.Left="206" Canvas.Top="120" Height="27" FontSize="16" VerticalAlignment="Center">
+        <ComboBox Name ="cb_quantidadePosicoes" HorizontalAlignment="Left" Width="172" Canvas.Left="206" Canvas.Top="120" Height="27" FontSize="16" VerticalAlignment="Center">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>

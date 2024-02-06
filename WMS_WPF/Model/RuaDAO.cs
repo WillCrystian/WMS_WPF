@@ -51,7 +51,7 @@ namespace WMS_WPF.Model
                         {
                             rua.Id = Convert.ToInt32(reader["id"]);
                             rua.NumeroRua = Convert.ToInt32(reader["numeroRua"]);
-                            rua.QuantidadePosicao = Convert.ToInt32(reader["numeroRua"]);                            
+                            rua.QuantidadePosicao = Convert.ToInt32(reader["quantidadePosicoes"]);                            
                         }
                     }
                 }
@@ -73,7 +73,7 @@ namespace WMS_WPF.Model
             {
                 using (var cmd = BancodeDados.DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = $"INSERT INTO Rua (numeroRua, quantidadePosicao) VALUES ({t.NumeroRua}, {t.QuantidadePosicao})";
+                    cmd.CommandText = $"INSERT INTO Rua (numeroRua, quantidadePosicoes) VALUES ({t.NumeroRua}, {t.QuantidadePosicao})";
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -104,7 +104,7 @@ namespace WMS_WPF.Model
                             Rua rua = new Rua();
                             rua.Id = Convert.ToInt32(reader["id"]);
                             rua.NumeroRua = Convert.ToInt32(reader["numeroRua"]);
-                            rua.QuantidadePosicao = Convert.ToInt32(reader["numeroRua"]);
+                            rua.QuantidadePosicao = Convert.ToInt32(reader["quantidadePosicoes"]);
                             list.Add(rua);
                         }
                     }
@@ -129,7 +129,7 @@ namespace WMS_WPF.Model
             {
                 using (var cmd = BancodeDados.DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = $"UPDATE Rua SET numeroRua = {t.NumeroRua}, quantidadePosicao = {t.QuantidadePosicao} WHERE id = {t.Id};";
+                    cmd.CommandText = $"UPDATE Rua SET numeroRua = {t.NumeroRua}, quantidadePosicoes = {t.QuantidadePosicao} WHERE id = {t.Id};";
                     cmd.ExecuteNonQuery();
                     BancodeDados.DbConnection().Close();
                 }

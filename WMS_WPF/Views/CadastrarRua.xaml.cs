@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WMS_WPF.Model;
 using WMS_WPF.Sistemas;
 
 namespace WMS_WPF.Views
@@ -35,31 +36,33 @@ namespace WMS_WPF.Views
 
         private void btn_cadastrarRua_Click(object sender, RoutedEventArgs e)
         {
-            string numeroRua = txt_numeroRua.Text.Trim();
-            string quantidadePosicoes = cb_quantidadePosicoes.Text;
-
-            if (numeroRua == "" || quantidadePosicoes == "")
+           
+            if (txt_numeroRua.Text.Trim() == "" || cb_quantidadePosicoes.Text == "")
             {
-                MessageBox.Show("Preencher todos os campos.", "Mensagem Erro", MessageBoxButton.OK);
+                MessageBox.Show("Preencher todos os campos.", "Mensagem Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            Rua rua = new Rua();
+            rua.QuantidadePosicao = Convert.ToInt32(cb_quantidadePosicoes.Text);
+            rua.NumeroRua = Convert.ToInt32(txt_numeroRua.Text.Trim());
 
-            string sql = $"SELECT * FROM Rua WHERE numeroRua = '{numeroRua}'";
-            if (BancodeDados.GetSomeSelectDb(sql))
+            RuaDAO ruaDAO = new RuaDAO();
+
+            var existeRuaCadastrada = ruaDAO.List().Exists(x => x.NumeroRua == rua.NumeroRua);
+            if (existeRuaCadastrada)
             {
-                MessageBox.Show($"Rua {numeroRua} já existe.", "Mensagem Erro", MessageBoxButton.OK);
+                MessageBox.Show($"Rua {rua.NumeroRua} já existe.", "Mensagem Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
-            {
-                sql = $"INSERT INTO Rua (numeroRua, quantidadePosicoes) VALUES ({numeroRua}, {quantidadePosicoes})";
-                BancodeDados.InsertDb(sql);
-                MessageBox.Show($"Rua {numeroRua} cadastrado com sucesso.", "Mensagem Sucesso", MessageBoxButton.OK);               
+            {       
+                ruaDAO.Insert(rua);
+                MessageBox.Show($"Rua {rua.NumeroRua} cadastrado com sucesso.", "Mensagem Sucesso", MessageBoxButton.OK);
             }
 
             txt_numeroRua.Text = "";
             cb_quantidadePosicoes.Text = "";
-            this.Close(); 
+            this.Close();
         }
     }
 }

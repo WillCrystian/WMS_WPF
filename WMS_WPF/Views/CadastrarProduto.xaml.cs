@@ -53,8 +53,7 @@ public partial class CadastrarProduto : Window
         produto.Nome = "Rolo";
         produto.Op = cb_numeroOp.SelectedItem as OP;
         produto.Item = Convert.ToInt32(txt_item.Text);
-
-        //var quantidadeItem = opdao.List().Where(x => x.NumeroOp == Convert.ToInt32(cb_numeroOp.SelectedItem.ToString())).Select(x => x.QuantidadeItem);
+        
         //verificar se o item da op já existe
         
         ProdutoDAO produtoDAO = new ProdutoDAO();
