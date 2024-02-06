@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\william.aniceto\source\repos\WMS_WPF\WMS_WPF\App.xaml
-4562960711
+51835941789
 
-12-453715633
+21975521408
 206793731131
-MainWindow.xaml;Screens\CadastrarOp.xaml;Screens\CadastrarProduto.xaml;Screens\CadastrarRua.xaml;
+MainWindow.xaml;Views\CadastrarOp.xaml;Views\CadastrarProduto.xaml;Views\CadastrarRua.xaml;Views\InfoPosicao.xaml;
 
-True
+False
 

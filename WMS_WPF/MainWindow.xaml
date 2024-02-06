@@ -11,13 +11,61 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Title="WMS" Height="800" Width="800" WindowStartupLocation="CenterScreen">
-    <Canvas x:Name="myCanvas">
-        <Button Name="btn_cadastrarOp" Width="150" Height="50" Canvas.Left="30" Canvas.Top="10" Content="Cadastrar OP" Click="btn_cadastrarOp_Click"/>
+        Title="WMS" MinHeight="800" MinWidth="1400" WindowStartupLocation="CenterScreen">
+    <DockPanel x:Name="myCanvas" Loaded="LoadScreen">
+        <StackPanel DockPanel.Dock="Left" Width="300">
+            <Button Width="280" Height="100" Content="Substituir por LOGO" Margin="10 10"/>
+            <TreeView MinWidth="220">
+                <TreeViewItem Header="Cadastros">
+                    
+                    <TreeViewItem Selected="Selec_CadastrarOp">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="8,0,0,0" Text="Cadastrar OP"/>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    
+                    <TreeViewItem Selected="Selec_CadastrarProduto">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="8,0,0,0" Text="Cadastrar Produto"/>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    
+                    <TreeViewItem Selected="Selec_CadastrarRua">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="8,0,0,0" Text="Cadastrar Rua"/>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    
+                </TreeViewItem>               
+            </TreeView>
+        </StackPanel>
+        
+        <StackPanel DockPanel.Dock="Top" Height="100">
+            <Button Height="100">Top</Button>
+        </StackPanel> 
+        
+        <StackPanel>
+            <Grid Margin="10">
+                
+            </Grid>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 10">
+            <TextBlock>Data: </TextBlock>
+            <TextBlock Name="txtData"></TextBlock>
+        </StackPanel>
+
+        <!--<Button Name="btn_cadastrarOp" Width="150" Height="50" Canvas.Left="30" Canvas.Top="10" Content="Cadastrar OP" Click="btn_cadastrarOp_Click"/>
         <Button Name="btn_cadastrarProduto" Width="150" Height="50" Canvas.Left="190" Canvas.Top="10" Content="Cadastrar Produto" Click="btn_cadastrarProduto_Click"/>
-        <Button Name="btn_cadastrarRua" Width="150" Height="50" Canvas.Left="350" Canvas.Top="10" Content="Cadastrar Rua" Click="btn_cadastrarRua_Click"/>
+        <Button Name="btn_cadastrarRua" Width="150" Height="50" Canvas.Left="350" Canvas.Top="10" Content="Cadastrar Rua" Click="btn_cadastrarRua_Click"/>-->
         <!--<Button Width="50" Height="50" Canvas.Left="30" Canvas.Top="90"/>
         <Button Width="50" Height="50" Canvas.Left="90" Canvas.Top="90"/>
         <Button Width="50" Height="50" Canvas.Left="150" Canvas.Top="90"/>-->
-    </Canvas>
+    </DockPanel>
 </Window>
