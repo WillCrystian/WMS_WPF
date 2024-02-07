@@ -31,11 +31,9 @@ public static class Helper
         BancodeDados.CreateTableDb(query);
         query = @"CREATE TABLE IF NOT EXISTS Posicao (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                Op INTEGER,
-                NumeroItem INTEGER,
-                Ocupado BOOL,
-                NumeroRua INTEGER,
-                Profundidade INTEGER)";
+                ruaFK INTEGER,
+                profundidade INTEGER,
+                ocupado BOOL)";
         BancodeDados.CreateTableDb(query);
     }
 }

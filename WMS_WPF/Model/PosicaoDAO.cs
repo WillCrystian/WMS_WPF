@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using WMS_WPF.Interface;
 using WMS_WPF.Sistemas;
+using System.Windows.Documents;
 
 namespace WMS_WPF.Model;
 
@@ -35,7 +36,7 @@ public class PosicaoDAO : IDAO<Posicao>
 
     public Posicao GetById(int id)
     {
-        Posicao posicao = new Posicao(); ;
+        Posicao posicao = new Posicao();
         try
         {
             using (var cmd = BancodeDados.DbConnection().CreateCommand())
@@ -45,11 +46,11 @@ public class PosicaoDAO : IDAO<Posicao>
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
+                    {                       
                         posicao.Id = Convert.ToInt32(reader["id"]);
+                        posicao.Rua = new RuaDAO().GetById(Convert.ToInt32(reader["ruaFK"])); ;
+                        posicao.Profundidade = Convert.ToInt32(reader["profundidade"]);
                         posicao.Ocupado = Convert.ToBoolean(reader["ocupado"]);
-                        posicao.Rua = reader["quantidadeItem"] as Rua;
-                        posicao.Profundidade = Convert.ToInt32(reader["posicao"]);
                     }
                 }
             }
@@ -67,11 +68,15 @@ public class PosicaoDAO : IDAO<Posicao>
 
     public void Insert(Posicao t)
     {
+        var existeDados = List().Exists(x => x.Rua.Id == t.Rua.Id && x.Profundidade == t.Profundidade);
+        if (existeDados)                   
+            return;
+
         try
         {
             using (var cmd = BancodeDados.DbConnection().CreateCommand())
             {
-                cmd.CommandText = $"INSERT INTO Posicao (ocupado, rua, posicao) VALUES ({t.Ocupado}, {t.Rua}, {t.Profundidade})";
+                cmd.CommandText = $"INSERT INTO Posicao (ruaFK, profundidade, ocupado) VALUES ({t.Rua.Id}, {t.Profundidade},{t.Ocupado})";
                 cmd.ExecuteNonQuery();
             }
         }
@@ -92,7 +97,7 @@ public class PosicaoDAO : IDAO<Posicao>
         {
             using (var cmd = BancodeDados.DbConnection().CreateCommand())
             {
-                cmd.CommandText = $"SELECT * FROM Rua";
+                cmd.CommandText = $"SELECT * FROM Posicao";
                 cmd.CommandType = CommandType.Text;
 
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
@@ -100,10 +105,12 @@ public class PosicaoDAO : IDAO<Posicao>
                     while (reader.Read())
                     {
                         Posicao posicao = new Posicao();
+                        
                         posicao.Id = Convert.ToInt32(reader["id"]);
+                        posicao.Rua = new RuaDAO().GetById(Convert.ToInt32(reader["ruaFK"])); 
+                        posicao.Profundidade = Convert.ToInt32(reader["profundidade"]);
                         posicao.Ocupado = Convert.ToBoolean(reader["ocupado"]);
-                        posicao.Rua = reader["quantidadeItem"] as Rua;
-                        posicao.Profundidade = Convert.ToInt32(reader["posicao"]);
+
                         list.Add(posicao);
                     }
                 }

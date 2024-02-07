@@ -55,14 +55,29 @@ namespace WMS_WPF.Views
                 return;
             }
             else
-            {       
+            {
                 ruaDAO.Insert(rua);
+                CadastrarPosicao();
                 MessageBox.Show($"Rua {rua.NumeroRua} cadastrado com sucesso.", "Mensagem Sucesso", MessageBoxButton.OK);
             }
 
             txt_numeroRua.Text = "";
             cb_quantidadePosicoes.Text = "";
             this.Close();
+        }
+
+        private static void CadastrarPosicao()
+        {
+            List<Rua> ruas = new RuaDAO().List();
+
+            foreach (var rua in ruas)
+            {
+                for (int i = 0; i < rua.QuantidadePosicao; i++)
+                {
+                    Posicao posicao = new Posicao(rua, i);
+                    new PosicaoDAO().Insert(posicao);
+                }
+            }
         }
     }
 }

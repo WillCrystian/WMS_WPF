@@ -48,7 +48,12 @@
         
         <StackPanel DockPanel.Dock="Top" Height="100">
             <Button Height="100">Top</Button>
-        </StackPanel> 
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 10">
+            <TextBlock>Data:</TextBlock>
+            <TextBlock Name="txtData"></TextBlock>
+        </StackPanel>
         
         <StackPanel>
             <Grid Margin="10">
@@ -56,10 +61,7 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 10">
-            <TextBlock>Data: </TextBlock>
-            <TextBlock Name="txtData"></TextBlock>
-        </StackPanel>
+        
 
         <!--<Button Name="btn_cadastrarOp" Width="150" Height="50" Canvas.Left="30" Canvas.Top="10" Content="Cadastrar OP" Click="btn_cadastrarOp_Click"/>
         <Button Name="btn_cadastrarProduto" Width="150" Height="50" Canvas.Left="190" Canvas.Top="10" Content="Cadastrar Produto" Click="btn_cadastrarProduto_Click"/>

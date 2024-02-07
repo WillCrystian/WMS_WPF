@@ -39,29 +39,9 @@ public partial class MainWindow : Window
         txtData.Text = DateTime.Now.ToString("dd/MM/yyyy");
     }
 
-    
-
     private void CreatePositionScreen()
     {
-        string query = "SELECT * FROM Rua";
-        DataTable dt = BancodeDados.SelectDb(query);
-        int alturaPosicionamentoPosicao = 100;
-        int espacamentoAltura = 60;
-
-        foreach (DataRow dr in dt.Rows)
-        {
-            int quantidadePosicoes = Convert.ToInt32(dr["quantidadePosicoes"]);
-            int numeroRua = Convert.ToInt32(dr["numeroRua"]);
-
-            for (int i = 0; i < quantidadePosicoes; i++)
-            {
-                //Posicao posicao = new Posicao(numeroRua, i, alturaPosicionamentoPosicao);
-                //myCanvas.Children.Add(posicao.button);
-                //myCanvas.Children.Add(posicao.label);
-                //espacamentoAltura = Convert.ToInt32(posicao.button.Height) + 10;
-            }
-            alturaPosicionamentoPosicao += espacamentoAltura;
-        }
+        
     }
 
     private void LoadScreen(object sender, RoutedEventArgs e)

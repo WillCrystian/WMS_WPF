@@ -12,10 +12,21 @@ namespace WMS_WPF.Model;
 
 public class Posicao
 {
+    public Posicao()
+    {        
+    }
+    public Posicao(Rua rua, int profundidade)
+    {
+        Rua = rua;
+        Profundidade = profundidade;
+        Ocupado = false;
+    }
+
     public int Id { get; set; }
-    public bool Ocupado { get; set; }
     public Rua Rua { get; set; }
     public int Profundidade { get; set; }
+    public bool Ocupado { get; set; }
+    
 
 
     //private int[] profundidade = new int[] { 170, 110, 50 };
